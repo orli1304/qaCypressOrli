@@ -8,6 +8,7 @@ describe("task2", function () {
   let login, homePage, SearchResult, addTocart, cart, product;
   beforeEach(function () {
     cy.visit("https://www.amazon.com/");
+    cy.reload();
     cy.clearCookies();
     homePage = new HomePage();
     SearchResult = new SearchResultPage();
@@ -32,7 +33,7 @@ describe("task2", function () {
       cy.visit(
         "https://www.amazon.com/Scissors-iBayam-Crafting-Scrapbooking-Knitting/dp/B07H3QKN2Z"
       );
-      product.clickSelectedColor();
+      product.clickSelectedColor(data.color);
       product.clickAddToCartButton();
       addTocart.textAddToCartCOnfirmation(data.addToCartText); //there is a mathod for comper the texts
       addTocart.clickCartButton();
